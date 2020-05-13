@@ -6,9 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".ui.listarutas.ListaRutasFragment">
 
-            android:layout_width="match_parent"
-            android:layout_height="85dp"
-            android:orientation="vertical">
 
 
     <RelativeLayout
@@ -17,12 +14,6 @@
         tools:layout_editor_absoluteX="1dp"
         tools:layout_editor_absoluteY="1dp">
 
-        <TextView
-            android:id="@+id/textView6"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:gravity="center"
-            android:text="Resultados de la búsqueda" />
 
         <ListView
             android:id="@+id/listarutas"
