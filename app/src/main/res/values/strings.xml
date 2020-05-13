@@ -1,0 +1,43 @@
+<resources>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle"> Recomendaciones de rutas turísticas</string>
+    <string name="nav_header_desc">Navigation header</string>
+
+    <string name="menu_creditos">Créditos</string>
+    <string name="menu_home">Inicio</string>
+    <string name="menu_criterio">Ingresar criterios</string>
+    <string name="menu_slideshow">Créditos</string>
+
+    <string name="home_second">Home Second</string>
+
+
+    <string name="app_name">PROYECTO_APK</string>
+    <string name="descripcion">   Recomendaciones de rutas turísticas según tus gustos y necesidades </string>
+
+    <string name="Iglesia">  Construida en 1880, la iglesia de La Pastora conserva la mayoría de sus características arquitectónicas originales.
+        “Su diseño es modesto, pero muy cuidado estéticamente. Tiene como referente estilístico el gótico,
+        lo cual se puede observar en las torres con pináculos y los arcos ojivales. </string>
+
+    <string name="Catarata">
+    Cataratas de Aquiares. Situada en el cantón de Turrialba, en el distrito de Santa Cruz en la provincia de Cartago en Costa Rica.
+    Tiene una altura de 50 metros, en una poza helada y cristalina. Se puede disfrutar de varios paisajes, entre ellos,
+    la primera es la vista de los valles de Orosí y Ujarrás. </string>
+
+    <string  name="Caminata" >Distintos lugares para realizar caminatas </string>
+
+
+    <string-array name="tipo_turista">
+        <item>Niños</item>
+        <item>Adultos</item>
+        <item>Todo público</item>
+    </string-array>
+
+    <string-array name="tipo_actividad">
+        <item>Turismo cultural</item>
+        <item>Turismo de aventura</item>
+        <item>Turismo de playa</item>
+
+    </string-array>
+</resources>
