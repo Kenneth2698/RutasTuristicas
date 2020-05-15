@@ -1,0 +1,82 @@
+package com.example.toolbar.ui.mapa;
+import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.model.CameraPosition;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.MapView;
+import com.google.android.gms.maps.MapsInitializer;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
+
+import com.example.toolbar.R;
+
+public class MapaFragment extends Fragment implements OnMapReadyCallback{
+
+    private GoogleMap googleMap;
+    MapView mMapView;
+    private View root;
+
+    @Override
+    public View onCreateView(@NonNull LayoutInflater inflater,
+                                ViewGroup container, Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        this.root = inflater.inflate(R.layout.fragment_mapa, container, false);
+/*
+        SupportMapFragment mapFragment = (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.main_branch_map);
+        mapFragment.getMapAsync(this);*/
+
+        mMapView = (MapView) this.root.findViewById(R.id.mapView);
+        mMapView.onCreate(savedInstanceState);
+
+        mMapView.onResume();
+
+        try {
+            MapsInitializer.initialize(getActivity().getApplicationContext());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        mMapView.getMapAsync(new OnMapReadyCallback() {
+            @Override
+            public void onMapReady(GoogleMap mMap) {
+                googleMap = mMap;
+
+                // For showing a move to my location button
+                //googleMap.setMyLocationEnabled(true);
+
+                // For dropping a marker at a point on the Map
+                LatLng sydney = new LatLng(9.939653, -83.723743);
+                googleMap.addMarker(new MarkerOptions().position(sydney).title("Aquiares").snippet("Ruta 1"));
+
+                // For zooming automatically to the location of the marker
+                CameraPosition cameraPosition = new CameraPosition.Builder().target(sydney).zoom(12).build();
+                googleMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
+            }
+        });
+
+
+
+        return root;
+    }
+
+    @Override
+    public void onMapReady(GoogleMap googleMap) {
+        googleMap = googleMap;
+        LatLng UCA = new LatLng(-34, 151);
+        googleMap.addMarker(new MarkerOptions().position(UCA).title("YOUR TITLE")).showInfoWindow();
+
+        googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(UCA,17));
+
+    }
+
+}
