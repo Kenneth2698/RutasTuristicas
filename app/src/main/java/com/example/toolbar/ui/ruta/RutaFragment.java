@@ -4,19 +4,22 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProviders;
 import com.example.toolbar.R;
+import com.example.toolbar.ui.mapa.MapaFragment;
 
 
 public class RutaFragment extends Fragment {
     private View root;
     private RutaViewModel rutaViewModel;
-
+    private Button mapaBtn;
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         rutaViewModel =
@@ -72,6 +75,24 @@ public class RutaFragment extends Fragment {
             }
         });
 
+        mapaBtn = root.findViewById(R.id.mapaBtn);
+
+        mapaBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Fragment fragment = null;
+                fragment = new MapaFragment();
+                replaceFragment(fragment);
+            }
+        });
+
         return root;
+    }
+
+    public void replaceFragment(Fragment someFragment) {
+        FragmentTransaction transaction = getFragmentManager().beginTransaction();
+        transaction.replace(this.getId(), someFragment);
+        transaction.addToBackStack(null);
+        transaction.commit();
     }
 }

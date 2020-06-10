@@ -2,6 +2,7 @@ package com.example.toolbar.ui.listarutas;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,14 +16,24 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.example.toolbar.R;
+import com.example.toolbar.model.Ruta;
 import com.example.toolbar.ui.ruta.RutaFragment;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 
 public class ListaRutasFragment extends Fragment {
 
+    private ArrayList<Ruta> rutas;
     private ListView listview;
     private ListaRutasViewModel listaRutasViewModel;
+
+    public ListaRutasFragment(ArrayList<Ruta> rutas) {
+        this.rutas = rutas;
+    }
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -52,14 +63,17 @@ public class ListaRutasFragment extends Fragment {
 
 
     private void cargarLista(){
-        ArrayList<String> rutas = new ArrayList<String>();
+        ArrayList<String> nombreRutas = new ArrayList<>();
 
-        rutas.add("Ruta 1 Niños (Cultural)");
-        rutas.add("Ruta 2 Adultos (Aventura)");
-        rutas.add("Ruta 3 Todo público (Playa)");
+        for (int i = 0; i < this.rutas.size(); i++){
+            Ruta ruta = this.rutas.get(i);
+            nombreRutas.add(ruta.getNombre());
+            //Log.d("SALIDA", ruta.getString("nombre"));
+
+        }
 
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this.getContext(), android.R.layout.simple_list_item_1, rutas);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this.getContext(), android.R.layout.simple_list_item_1, nombreRutas);
 
         this.listview.setAdapter(adapter);
     }
