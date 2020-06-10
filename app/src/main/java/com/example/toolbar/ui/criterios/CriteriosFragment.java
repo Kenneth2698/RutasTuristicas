@@ -21,9 +21,9 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.example.toolbar.Euclides;
+import com.example.toolbar.IOHelper;
 import com.example.toolbar.R;
 import com.example.toolbar.model.Ruta;
-import com.example.toolbar.ui.IOHelper;
 import com.example.toolbar.ui.listarutas.ListaRutasFragment;
 
 import org.json.JSONArray;
