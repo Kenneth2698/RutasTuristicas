@@ -1,4 +1,4 @@
-package com.example.toolbar.ui;
+package com.example.toolbar;
 
 import android.content.Context;
 import android.content.res.AssetManager;

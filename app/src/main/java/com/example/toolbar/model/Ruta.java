@@ -7,13 +7,17 @@ public class Ruta {
     private int precio;
     private int tipoTurista;
     private int tipoActividad;
+    private String latitud;
+    private String longitud;
 
-    public Ruta(int id, String nombre, int precio, int tipoTurista, int tipoActividad) {
+    public Ruta(int id, String nombre, int precio, int tipoTurista, int tipoActividad, String latitud, String longitud) {
         this.id = id;
         this.nombre = nombre;
         this.precio = precio;
         this.tipoTurista = tipoTurista;
         this.tipoActividad = tipoActividad;
+        this.latitud = latitud;
+        this.longitud = longitud;
     }
 
     public int getId() {
@@ -56,4 +60,19 @@ public class Ruta {
         this.tipoActividad = tipoActividad;
     }
 
+    public String getLatitud() {
+        return latitud;
+    }
+
+    public void setLatitud(String latitud) {
+        this.latitud = latitud;
+    }
+
+    public String getLongitud() {
+        return longitud;
+    }
+
+    public void setLongitud(String longitud) {
+        this.longitud = longitud;
+    }
 }
