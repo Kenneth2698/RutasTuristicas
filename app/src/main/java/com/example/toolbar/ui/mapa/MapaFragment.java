@@ -1,4 +1,6 @@
 package com.example.toolbar.ui.mapa;
+
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -7,6 +9,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.GoogleMap;
@@ -20,15 +23,23 @@ import com.google.android.gms.maps.model.MarkerOptions;
 
 import com.example.toolbar.R;
 
-public class MapaFragment extends Fragment implements OnMapReadyCallback{
+public class MapaFragment extends Fragment implements OnMapReadyCallback {
 
     private GoogleMap googleMap;
     MapView mMapView;
     private View root;
+    private double lat;
+    private double lon;
+
+    public MapaFragment(String lat, String lon) {
+        this.lat = Double.parseDouble(lat);
+        this.lon = Double.parseDouble(lon);
+
+    }
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
-                                ViewGroup container, Bundle savedInstanceState) {
+                             ViewGroup container, Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         this.root = inflater.inflate(R.layout.fragment_mapa, container, false);
 /*
@@ -51,19 +62,15 @@ public class MapaFragment extends Fragment implements OnMapReadyCallback{
             public void onMapReady(GoogleMap mMap) {
                 googleMap = mMap;
 
-                // For showing a move to my location button
-                //googleMap.setMyLocationEnabled(true);
+                LatLng sydney = new LatLng(lat, lon);
 
-                // For dropping a marker at a point on the Map
-                LatLng sydney = new LatLng(9.939653, -83.723743);
-                googleMap.addMarker(new MarkerOptions().position(sydney).title("Aquiares").snippet("Ruta 1"));
+                googleMap.addMarker(new MarkerOptions().position(sydney).title("Ruta"));
 
-                // For zooming automatically to the location of the marker
                 CameraPosition cameraPosition = new CameraPosition.Builder().target(sydney).zoom(12).build();
+
                 googleMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
             }
         });
-
 
 
         return root;
@@ -75,7 +82,7 @@ public class MapaFragment extends Fragment implements OnMapReadyCallback{
         LatLng UCA = new LatLng(-34, 151);
         googleMap.addMarker(new MarkerOptions().position(UCA).title("YOUR TITLE")).showInfoWindow();
 
-        googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(UCA,17));
+        googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(UCA, 17));
 
     }
 
