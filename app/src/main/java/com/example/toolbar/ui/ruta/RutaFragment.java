@@ -49,7 +49,7 @@ public class RutaFragment extends Fragment {
             //TITULO
             TextView nombre = new TextView(getContext());
             nombre.setWidth(ViewGroup.LayoutParams.MATCH_PARENT);
-            nombre.setHeight(50);
+            nombre.setHeight(100);
             nombre.setGravity(Gravity.CENTER);
             nombre.setText(this.atractivos.get(i).getNombre());
 
@@ -58,13 +58,14 @@ public class RutaFragment extends Fragment {
             String nombreImagen = "i" + String.valueOf(this.atractivos.get(i).getImagen());
             int imageId = getResources().getIdentifier(nombreImagen, "mipmap", getContext().getPackageName());
             imagen.setImageResource(imageId);
-            imagen.setMaxWidth(ViewGroup.LayoutParams.MATCH_PARENT);
-            imagen.setMaxHeight(ViewGroup.LayoutParams.WRAP_CONTENT);
+            imagen.setMinimumWidth(ViewGroup.LayoutParams.MATCH_PARENT);
+            imagen.setMinimumHeight(ViewGroup.LayoutParams.WRAP_CONTENT);
+
 
             //DESCRIPCION
             TextView descripcion = new TextView(getContext());
             descripcion.setWidth(ViewGroup.LayoutParams.MATCH_PARENT);
-            descripcion.setHeight(300);
+            descripcion.setHeight(400);
             descripcion.setGravity(Gravity.CENTER);
             descripcion.setText(this.atractivos.get(i).getDescripcion());
 
